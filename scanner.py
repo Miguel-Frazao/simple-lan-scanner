@@ -1,7 +1,11 @@
 import socket
 
-host = socket.gethostbyname(socket.gethostname())
-param = host.split('.')[-1] # getting the octet before the last one
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("gmail.com",80))
+host = s.getsockname()[0]
+s.close()
+
+param = host.split('.')[-2] # getting the octet before the last one
 for i in range(255):
 	try:
 		found = socket.gethostbyaddr('192.168.{}.{}'.format(param, i))
