@@ -1,6 +1,6 @@
 import socket
 
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(("gmail.com",80))
 host = s.getsockname()[0]
 s.close()
